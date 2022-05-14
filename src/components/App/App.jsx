@@ -1,23 +1,51 @@
+import {Switch, Route} from 'react-router-dom';
+import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src className="App-logo" alt="logo" />
-        <p>
-          КИКИрики.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ХобаНА
-        </a>
-      </header>
-    </div>
-  );
+import Header from '../Header/Header';
+import Main from '../Main/Main';
+import Movies from '../Movies/Movies';
+import SavedMovies from '../Movies/SavedMovies/SavedMovies';
+import Footer from '../Footer/Footer';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import Profile from '../Profile/Profile';
+import NotFound from '../NotFound/NotFound';
+import {footerLinks} from '../../config/links';
+
+const App = () => {
+
+    return (<div className="app">
+        <Switch>
+            <Route exact path="/">
+                <Header/>
+                <Main/>
+                <Footer links={footerLinks}/>
+            </Route>
+            <Route path="/movies">
+                <Header/>
+                <Movies/>
+                <Footer links={footerLinks}/>
+            </Route>
+            <Route path="/saved-movies">
+                <Header/>
+                <SavedMovies/>
+                <Footer links={footerLinks}/>
+            </Route>
+            <Route path="/signup">
+                <Register/>
+            </Route>
+            <Route path="/signin">
+                <Login/>
+            </Route>
+            <Route path="/profile">
+                <Header/>
+                <Profile/>
+            </Route>
+            <Route path="*">
+                <NotFound/>
+            </Route>
+        </Switch>
+    </div>);
 }
 
 export default App;
