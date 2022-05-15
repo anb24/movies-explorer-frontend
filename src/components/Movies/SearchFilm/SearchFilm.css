@@ -1,20 +1,20 @@
 .search-film {
     box-sizing: border-box;
     position: relative;
-    padding: 16px 30px 17px;
+    /*padding: 16px 30px 17px;*/
     max-height: 73px;
     display: grid;
     grid-template-columns: 1fr repeat(2, min-content);
     grid-template-areas:
   "form divider short-film";
     column-gap: 30px;
-    background-color: var(--secondary-bg-color);
     border-radius: var(--base-border-radius);
+    /*background-color: var(--secondary-bg-color); цвет фона, добавить после ревью */
 }
 
 
 .search-film_position {
-    margin: 70px 0;
+    margin: 70px 0 7px;
 }
 
 .search-film__form {
@@ -65,7 +65,7 @@
     grid-area: divider;
     width: 1px;
     height: 40px;
-    background-color: var(--dark-lines-color);
+    /* background-color: var(--dark-lines-color); цвет разделителя, добавить после ревью */
 }
 
 @media screen and (max-width: 768px) {
