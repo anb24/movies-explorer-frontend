@@ -1,0 +1,36 @@
+.profile-link {
+    position: relative;
+    display: grid;
+    align-items: center;
+    gap: 14px;
+    font-size: 14px;
+    color: var(--light-text-color);
+    background-color: var(--profile-icon-bg-color);
+    border-radius: 20px;
+    justify-content: center;
+    width: 100px;
+    height: 32px;
+    text-decoration: none;
+    transition: .3s all;
+}
+
+.profile-link:hover {
+    opacity: .6;
+}
+
+.profile-link_active {
+    font-weight: var(--medium-fw);
+}
+
+.profile-icon {
+    padding: 8px;
+    width: 29px;
+    height: 29px;
+
+}
+
+@media screen and (max-width: 768px) {
+    .profile-link {
+        display: none;
+    }
+}
