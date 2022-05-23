@@ -1,15 +1,15 @@
 import React from 'react';
-import {Redirect, Route} from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 
-const ProtectedRoute = ({component: Component, ...props}) => {
+const ProtectedRoute = ({ component: Component, ...props }) => {
   return (
-      <Route>
-        {
-          () => props.loggedIn === true
-              ? <Component {...props} />
-              : <Redirect to="/"/>
-        }
-      </Route>
+    <Route>
+      {
+        () => props.loggedIn === true
+          ? <Component {...props} />
+          : <Redirect to="/" />
+      }
+    </Route>
   );
 };
 

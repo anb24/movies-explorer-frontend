@@ -1,4 +1,4 @@
-import {MOVIES_API_URL} from './constants';
+import { MOVIES_API_URL } from "./constants";
 
 class MoviesApi {
   constructor(params) {
@@ -8,25 +8,25 @@ class MoviesApi {
 
   // ПРОВЕРКА ПРОМИСА:
   _getResponse(res) {
-    return res.ok ?
-        res.json() :
-        Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`)
+    return res.ok
+      ? res.json()
+      : Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
   }
 
   // GET: получение массива фильмов со стороннего API
   getMovies() {
     return fetch(`${this._url}/beatfilm-movies`, {
       headers: {
-        ...this._headers
-      }
-    }).then(this._getResponse)
+        ...this._headers,
+      },
+    }).then(this._getResponse);
   }
 }
 
 export const moviesApi = new MoviesApi({
   url: `${MOVIES_API_URL}`,
   headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-  }
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
 });

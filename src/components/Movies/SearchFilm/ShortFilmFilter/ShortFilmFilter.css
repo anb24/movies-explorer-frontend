@@ -24,7 +24,7 @@
 }
 
 /* состояние неотмеченного чекбокса */
-.shortfilm-filter__real + .shortfilm-filter__fake {
+.shortfilm-filter__real+.shortfilm-filter__fake {
     display: block;
     position: relative;
     width: 34px;
@@ -35,7 +35,7 @@
 }
 
 /* состояние ползунка неотмеченного чекбокса */
-.shortfilm-filter__real + .shortfilm-filter__fake:before {
+.shortfilm-filter__real+.shortfilm-filter__fake:before {
     position: absolute;
     content: '';
     top: 2px;
@@ -48,13 +48,13 @@
 }
 
 /* состояние отмеченного чекбокса */
-.shortfilm-filter__real:checked + .shortfilm-filter__fake {
+.shortfilm-filter__real:checked+.shortfilm-filter__fake {
     background-color: var(--primary-accent-color);
     transition: .2s;
 }
 
 /* состояние ползунка отмеченного чекбокса */
-.shortfilm-filter__real:checked + .shortfilm-filter__fake:before {
+.shortfilm-filter__real:checked+.shortfilm-filter__fake:before {
     left: 22px;
 }
 

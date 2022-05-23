@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: 1fr repeat(2, min-content);
     grid-template-areas:
-  "form divider short-film";
+        "form divider short-film";
     column-gap: 30px;
     border-radius: var(--base-border-radius);
     /*background-color: var(--secondary-bg-color); цвет фона, добавить после ревью */
@@ -88,12 +88,13 @@
         grid-template-columns: 1fr;
         grid-template-rows: repeat(2, min-content);
         grid-template-areas:
-      "form"
-      "short-film";
+            "form"
+            "short-film";
         row-gap: 70px;
     }
 
-    .search-film__icon, .search-film__divider {
+    .search-film__icon,
+    .search-film__divider {
         display: none;
     }
 }

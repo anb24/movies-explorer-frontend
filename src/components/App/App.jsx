@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
-import {Switch, Route, useHistory} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import './App.css';
 
 import Header from '../Header/Header';
@@ -12,9 +12,9 @@ import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import {footerLinks} from '../../config/links';
-import {CurrentUserContext} from '../../contexts/currentUserContext';
-import {mainApi} from '../../utils/MainApi';
+import { footerLinks } from '../../config/links';
+import { CurrentUserContext } from '../../contexts/currentUserContext';
+import { mainApi } from '../../utils/MainApi';
 
 const App = () => {
     const history = useHistory();
@@ -40,12 +40,12 @@ const App = () => {
     };
 
     // регистрация
-    const handleRegister = ({name, email, password}) => {
+    const handleRegister = ({ name, email, password }) => {
         setPreloaderVisibility('preloader_visible');
-        return mainApi.register({name, email, password})
+        return mainApi.register({ name, email, password })
             .then(data => {
                 if (data) {
-                    handleLogin({email, password});
+                    handleLogin({ email, password });
                     history.push('/movies');
                 }
             })
@@ -54,9 +54,9 @@ const App = () => {
     };
 
     // авторизация
-    const handleLogin = ({email, password}) => {
+    const handleLogin = ({ email, password }) => {
         setPreloaderVisibility('preloader_visible');
-        mainApi.authorize({email, password})
+        mainApi.authorize({ email, password })
             .then(data => {
                 localStorage.setItem('token', data.token);
                 setLoggedIn(true);
@@ -75,9 +75,9 @@ const App = () => {
     };
 
     // редактирование профиля
-    const handleUpdateUser = ({name, email}) => {
+    const handleUpdateUser = ({ name, email }) => {
         setPreloaderVisibility('preloader_visible');
-        mainApi.editUserData({name, email}, getToken())
+        mainApi.editUserData({ name, email }, getToken())
             .then(res => {
                 setCurrentUser(res);
                 setIsUpdateFail(false);
@@ -107,39 +107,39 @@ const App = () => {
         }
     }, [history, loggedIn]);
 
-    return ( <div className="app">
+    return (<div className="app">
         <CurrentUserContext.Provider value={currentUser}>
             <Switch>
                 <Route exact path="/">
-                    <Header loggedIn={loggedIn}/>
-                    <Main/>
-                    <Footer links={footerLinks}/>
+                    <Header loggedIn={loggedIn} />
+                    <Main />
+                    <Footer links={footerLinks} />
                 </Route>
                 <Route path="/signup">
-                    <Register onRegister={handleRegister}/>
+                    <Register onRegister={handleRegister} />
                 </Route>
                 <Route path="/signin">
-                    <Login onLogin={handleLogin}/>
+                    <Login onLogin={handleLogin} />
                 </Route>
 
                 <ProtectedRoute path="/movies"
-                                loggedIn={loggedIn}
-                                component={Movies}
+                    loggedIn={loggedIn}
+                    component={Movies}
                 />
                 <ProtectedRoute path="/saved-movies"
-                                loggedIn={loggedIn}
-                                component={Movies}
+                    loggedIn={loggedIn}
+                    component={Movies}
                 />
                 <ProtectedRoute path="/profile"
-                                loggedIn={loggedIn}
-                                component={Profile}
-                                onSignOut={handleSignOut}
-                                onUpdateUser={handleUpdateUser}
-                                isUpdateSuccess={isUpdateSuccess}
-                                isUpdateFail={isUpdateFail}
+                    loggedIn={loggedIn}
+                    component={Profile}
+                    onSignOut={handleSignOut}
+                    onUpdateUser={handleUpdateUser}
+                    isUpdateSuccess={isUpdateSuccess}
+                    isUpdateFail={isUpdateFail}
                 />
                 <Route path="*">
-                    <NotFound/>
+                    <NotFound />
                 </Route>
             </Switch>
         </CurrentUserContext.Provider>

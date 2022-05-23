@@ -1,25 +1,25 @@
-import {useEffect, useState} from 'react';
-import {useLocation} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './MoviesCardList.css'
 import MoviesCard from '../MoviesCard/MoviesCard';
 import calculateMovieDuration from '../../../utils/calculateMoviesDuration';
 
 const MoviesCardList = ({
-                            movies,
-                            savedMovies,
-                            renderedMoviesList,
-                            setRenderedMoviesList,
-                            moviesVisibility,
-                            setMoviesVisibility,
-                            countInitialCards,
-                            moviesCount,
-                            setMoviesCount,
-                            setMoreButtonVisibility,
-                            addMovieToFavorites,
-                            removeMovieFromFavorites,
-                            loggedIn
-                        }) => {
-    const {pathname} = useLocation();
+    movies,
+    savedMovies,
+    renderedMoviesList,
+    setRenderedMoviesList,
+    moviesVisibility,
+    setMoviesVisibility,
+    countInitialCards,
+    moviesCount,
+    setMoviesCount,
+    setMoreButtonVisibility,
+    addMovieToFavorites,
+    removeMovieFromFavorites,
+    loggedIn
+}) => {
+    const { pathname } = useLocation();
     const foundMovies = localStorage.getItem('foundMovies');
     const [emptyListNoticeVisibility, setEmptyListNoticeVisibility] = useState('');
 
@@ -106,10 +106,10 @@ const MoviesCardList = ({
                 movies.length > renderedMoviesList.length || pathname !== '/saved-movies'
                     ? (
                         <button type="button"
-                                onClick={() => {
-                                    setMoviesCount({ ...moviesCount, startCards: moviesCount.startCards + moviesCount.moreCards })
-                                }}
-                                className={`movies-card-list__load-more movies-card-list__more-caption ${moviesCount.startCards < movies.length? "": "movies-card-list__load-more_hidden"}`}
+                            onClick={() => {
+                                setMoviesCount({ ...moviesCount, startCards: moviesCount.startCards + moviesCount.moreCards })
+                            }}
+                            className={`movies-card-list__load-more movies-card-list__more-caption ${moviesCount.startCards < movies.length ? "" : "movies-card-list__load-more_hidden"}`}
                         >Ещё</button>
                     )
                     : ''

@@ -3,20 +3,20 @@ import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import NavigationLink from '../Navigation/NavigationLink/NavigationLink';
 import ProfileLink from '../Profile/ProfileLink/ProfileLink';
-import {navLinks} from '../../config/links';
+import { navLinks } from '../../config/links';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
-const Header = ({loggedIn}) => {
+const Header = ({ loggedIn }) => {
     // const token = localStorage.getItem('token');
     return (
         <header className="header">
             <Logo />
             {/* навигация авторизованного пользователя */}
             <div className="header__loggedin-nav-wrapper">
-                { loggedIn ? <Navigation links={navLinks}/> : ('') }
+                {loggedIn ? <Navigation links={navLinks} /> : ('')}
             </div>
             {/* навигация неавторизованного пользователя */}
-            { !loggedIn ? (
+            {!loggedIn ? (
                 <nav className="header__auth-nav">
                     <ul className="header__nav-list">
                         <li className="header__nav-item">
@@ -37,7 +37,7 @@ const Header = ({loggedIn}) => {
             ) : <ProfileLink className={'header__profile-link'} />
             }
             {/* бургер-меню */}
-            { loggedIn ? <BurgerMenu/> : ('') }
+            {loggedIn ? <BurgerMenu /> : ('')}
         </header>
     );
 }

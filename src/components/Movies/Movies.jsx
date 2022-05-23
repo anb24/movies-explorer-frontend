@@ -1,5 +1,5 @@
-import {useEffect, useMemo, useState} from 'react';
-import {useLocation} from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Movies.css';
 import SearchFilm from './SearchFilm/SearchFilm';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
@@ -7,15 +7,15 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
 import shortMovies from '../../utils/shortMovies';
-import {numberCardsFromScreenSize} from '../../utils/screenDefinition';
+import { numberCardsFromScreenSize } from '../../utils/screenDefinition';
 // import {movies} from '../../config/links';
-import {footerLinks} from '../../config/links';
-import {moviesApi} from '../../utils/MoviesApi';
-import {mainApi} from'../../utils/MainApi';
-import {MOBILE_RESOLUTION, TABLET_RESOLUTION, SHORT_MOVIE_DURATION} from '../../utils/constants';
+import { footerLinks } from '../../config/links';
+import { moviesApi } from '../../utils/MoviesApi';
+import { mainApi } from '../../utils/MainApi';
+import { MOBILE_RESOLUTION, TABLET_RESOLUTION, SHORT_MOVIE_DURATION } from '../../utils/constants';
 
-const Movies = ({loggedIn}) => {
-    const {pathname} = useLocation();
+const Movies = ({ loggedIn }) => {
+    const { pathname } = useLocation();
     const [foundMovies, setFoundMovies] = useState([]);
     const [renderedMoviesList, setRenderedMoviesList] = useState([]);
     const [searchInputError, setSearchInputError] = useState('');
@@ -25,7 +25,7 @@ const Movies = ({loggedIn}) => {
     const [moreButtonVisibility, setMoreButtonVisibility] = useState('movies-card-list__load-more_hidden');
     const [loadMoreClickCounter, setLoadMoreClickCounter] = useState(1);
     const [isShortMovies, setIsShortMovies] = useState(false);
-    const [moviesCount, setMoviesCount] = useState({startCards: 0, rowCards: 0, moreCards: 0});
+    const [moviesCount, setMoviesCount] = useState({ startCards: 0, rowCards: 0, moreCards: 0 });
 
     useEffect(() => {
         mainApi.getSavedMovies()
@@ -71,12 +71,12 @@ const Movies = ({loggedIn}) => {
 
     function renderSpecificCardsCount() {
         const viewportWidth = window.screen.width;
-        if( viewportWidth < MOBILE_RESOLUTION ){
-            setMoviesCount({startCards: 5, rowCards: 1, moreCards: 2})
-        } else if (viewportWidth < TABLET_RESOLUTION ){
-            setMoviesCount({startCards: 8, rowCards: 2, moreCards: 2})
+        if (viewportWidth < MOBILE_RESOLUTION) {
+            setMoviesCount({ startCards: 5, rowCards: 1, moreCards: 2 })
+        } else if (viewportWidth < TABLET_RESOLUTION) {
+            setMoviesCount({ startCards: 8, rowCards: 2, moreCards: 2 })
         } else {
-            setMoviesCount({startCards: 16, rowCards: 4, moreCards: 4})
+            setMoviesCount({ startCards: 16, rowCards: 4, moreCards: 4 })
         }
     }
 
@@ -115,8 +115,8 @@ const Movies = ({loggedIn}) => {
             }
 
             filterMoviesByKeyword(localStorage.getItem('movies')
-                    ? JSON.parse(localStorage.movies)
-                    : [],
+                ? JSON.parse(localStorage.movies)
+                : [],
                 query
             );
             setPreloaderVisibility('');
@@ -154,11 +154,11 @@ const Movies = ({loggedIn}) => {
             <section className="movies">
                 <div className="movies__container">
                     <SearchFilm searchInputError={searchInputError}
-                                setSearchInputError={setSearchInputError}
-                                isShortMovies={isShortMovies}
-                                setIsShortMovies={handleShortMovies}
-                                onSubmit={searchMovieHandler}
-                                className={'movies__search-film'}
+                        setSearchInputError={setSearchInputError}
+                        isShortMovies={isShortMovies}
+                        setIsShortMovies={handleShortMovies}
+                        onSubmit={searchMovieHandler}
+                        className={'movies__search-film'}
                     />
                     <MoviesCardList
                         movies={processedMovies}
@@ -180,7 +180,7 @@ const Movies = ({loggedIn}) => {
                 </div>
             </section>
             <Footer loggedIn={loggedIn}
-                    links={footerLinks}
+                links={footerLinks}
             />
         </>
     );

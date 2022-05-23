@@ -1,4 +1,4 @@
-const calculateMovieDuration = valueInMinutes => {
+const calculateMovieDuration = (valueInMinutes) => {
   const hours = Math.floor(valueInMinutes / 60);
   const minutes = valueInMinutes % 60;
   let calculatedDuration = `${hours}ч ${minutes}м`;

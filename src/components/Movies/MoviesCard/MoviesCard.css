@@ -17,8 +17,8 @@
     grid-template-rows: repeat(2, min-content);
     gap: 12px 15px;
     grid-template-areas:
-    "title icon"
-    "duration duration";
+        "title icon"
+        "duration duration";
 }
 
 .movies-card__title {

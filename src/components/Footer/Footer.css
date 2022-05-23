@@ -12,9 +12,9 @@
     grid-template-rows: 1fr min-content 1fr;
     gap: 20px;
     grid-template-areas:
-    "heading heading"
-    "line line"
-    "year nav-list";
+        "heading heading"
+        "line line"
+        "year nav-list";
 }
 
 .footer__heading {
@@ -63,6 +63,7 @@
     .footer {
         padding: 58px 40px 20px;
     }
+
     .footer__link {
         margin-left: 4px;
     }
@@ -77,10 +78,10 @@
         grid-template-columns: 1fr;
         grid-template-rows: repeat(2, min-content) 1fr min-content;
         grid-template-areas:
-      "heading"
-      "line"
-      "nav-list"
-      "year";
+            "heading"
+            "line"
+            "nav-list"
+            "year";
     }
 
     .footer__heading {

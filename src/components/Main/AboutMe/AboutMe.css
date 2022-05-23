@@ -14,7 +14,7 @@
     grid-template-columns: 1fr minmax(min-content, max-content);
     gap: 49px;
     grid-template-areas:
-    "description photo"
+        "description photo"
 }
 
 .bio__description {
@@ -23,10 +23,10 @@
     grid-template-rows: min-content 1fr 3fr min-content;
     grid-area: description;
     grid-template-areas:
-    "name"
-    "job"
-    "text"
-    "links"
+        "name"
+        "job"
+        "text"
+        "links"
 }
 
 .bio__name {
@@ -122,8 +122,8 @@
     .bio {
         grid-template-columns: 1fr;
         grid-template-areas:
-      "photo"
-      "description"
+            "photo"
+            "description"
     }
 
     .bio__description {

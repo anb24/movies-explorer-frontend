@@ -1,6 +1,6 @@
 import React from 'react';
 import NavTab from '../NavTab/NavTab';
-import {navTabLinks} from '../../../config/links';
+import { navTabLinks } from '../../../config/links';
 
 import './Promo.css';
 
