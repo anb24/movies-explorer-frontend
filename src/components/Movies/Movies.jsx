@@ -8,7 +8,6 @@ import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
 import shortMovies from '../../utils/shortMovies';
 import { numberCardsFromScreenSize } from '../../utils/screenDefinition';
-// import {movies} from '../../config/links';
 import { footerLinks } from '../../config/links';
 import { moviesApi } from '../../utils/MoviesApi';
 import { mainApi } from '../../utils/MainApi';

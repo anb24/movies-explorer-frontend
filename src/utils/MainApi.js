@@ -85,7 +85,7 @@ class MainApi {
         description: movie.description,
         image: `${MOVIES_API_URL}${movie.image.url}`,
         thumbnail: `${MOVIES_API_URL}${movie.image.url}`,
-        trailer: movie.trailerLink,
+        trailerLink: movie.trailerLink,
         movieId: movie.id.toString(),
         nameRU: movie.nameRU,
         nameEN: movie.nameEN,
@@ -102,7 +102,7 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  // url: 'http://localhost:3005', // для локальной разработки
+  // url: 'http://localhost:3000', // для локальной разработки
   url: `${MAIN_API_URL}`, // для удалённой разработки
   headers: {
     Accept: "application/json",

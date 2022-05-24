@@ -26,7 +26,7 @@ class MoviesApi {
 export const moviesApi = new MoviesApi({
   url: `${MOVIES_API_URL}`,
   headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
   },
 });
