@@ -2,9 +2,9 @@
 интерфейс на «Реакте»
 
 
-51.250.107.31 - публичный IP-адрес
-https://diplomar.nomoredomains.xyz/ - фронтенд
-https://api.diplomar.nomoredomains.work/ - бэкенд
+# 51.250.107.31 - публичный IP-адрес
+# https://diplomar.nomoredomains.xyz/ - фронтенд
+# https://api.diplomar.nomoredomains.work/ - бэкенд
 
 
 ## Доступные скрипты
