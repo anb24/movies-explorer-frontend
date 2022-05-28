@@ -23,7 +23,7 @@ class MainApi {
     }).then(this._getResponse);
   }
 
-  // PATCH: редактирование данных профиля
+  // PATCH: редактирование профиля
   editUserData({ name, email }, token) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",

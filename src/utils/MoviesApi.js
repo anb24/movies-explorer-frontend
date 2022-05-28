@@ -13,7 +13,7 @@ class MoviesApi {
       : Promise.reject(`Что-то пошло не так: ${res.status} ${res.statusText}`);
   }
 
-  // GET: получение массива фильмов со стороннего API
+  // GET: получение массива фильмов
   getMovies() {
     return fetch(`${this._url}/beatfilm-movies`, {
       headers: {
@@ -26,7 +26,7 @@ class MoviesApi {
 export const moviesApi = new MoviesApi({
   url: `${MOVIES_API_URL}`,
   headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
+    Accept: "application/json",
+    "Content-Type": "application/json",
   },
 });

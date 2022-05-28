@@ -17,7 +17,7 @@ const MoviesCard = ({
 }) => {
     const { pathname } = useLocation();
 
-    // проверяет, добавлен ли фильм в сохранённые
+    // проверяет добавление в "сохранённые"
     const isMovieAdded = movie => savedMovies.some(item => item.movieId === movie.id);
 
     const isAddedToFavorites = (pathname === '/saved-movies' ? true : isMovieAdded(movie));
@@ -58,7 +58,7 @@ const MoviesCard = ({
                 <p className="movies-card__title">{movieTitle}</p>
                 <span className="movies-card__duration">{movieDuration}</span>
                 <img src={cardIconState}
-                    alt="иконка кнопки, которая добавляет фильм в Сохранённые фильмы"
+                    alt="иконка сохранённые фильмы"
                     className="movies-card__icon"
                     onClick={movieIconBehaviorToggle}
                 />

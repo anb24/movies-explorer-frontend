@@ -1,4 +1,3 @@
-import React from 'react';
 import Logo from '../Logo/Logo';
 import AuthForm from '../AuthForm/AuthForm';
 import './Register.css';

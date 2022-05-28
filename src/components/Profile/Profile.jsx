@@ -12,7 +12,6 @@ const Profile = ({ loggedIn,
 }) => {
     const currentUser = useContext(CurrentUserContext);
 
-
     const { values, setValues, handleChange, errors, isValid } = useFormWithValidation();
     const { name, email } = values;
 

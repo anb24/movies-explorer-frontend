@@ -25,10 +25,6 @@ const SearchFilm = ({// searchInputError,
                     height="14"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M7.8 8.26a3.67 3.67 0 11-5.2-5.18 3.67 3.67 0 015.2 5.18zm.43 1.39a5 5 0 11.95-.95l3.56 3.57-.94.94-3.57-3.56z"
-                        fill="#8b8b8b80" />
                 </svg>
                 <input type="text"
                     placeholder="Фильм"

@@ -23,7 +23,7 @@
     clip: rect(0 0 0 0);
 }
 
-/* состояние неотмеченного чекбокса */
+/* состояние чекбокса off*/
 .shortfilm-filter__real+.shortfilm-filter__fake {
     display: block;
     position: relative;
@@ -34,7 +34,7 @@
     transition: .2s;
 }
 
-/* состояние ползунка неотмеченного чекбокса */
+/* состояние ползунка чекбокса off*/
 .shortfilm-filter__real+.shortfilm-filter__fake:before {
     position: absolute;
     content: '';
@@ -47,13 +47,13 @@
     transition: .2s;
 }
 
-/* состояние отмеченного чекбокса */
+/* состояние чекбокса on*/
 .shortfilm-filter__real:checked+.shortfilm-filter__fake {
     background-color: var(--primary-accent-color);
     transition: .2s;
 }
 
-/* состояние ползунка отмеченного чекбокса */
+/* состояние ползунка чекбокса on*/
 .shortfilm-filter__real:checked+.shortfilm-filter__fake:before {
     left: 22px;
 }
