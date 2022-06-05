@@ -47,7 +47,7 @@ const App = () => {
                     handleLogin({ email, password });
                     history.push('/movies');
                 }
-                window.location.reload();
+                // window.location.reload();
             })
             .catch(err => console.log(err))
             .finally(() => setPreloaderVisibility(''));
