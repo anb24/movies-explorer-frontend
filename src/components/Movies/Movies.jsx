@@ -129,6 +129,7 @@ const Movies = ({ loggedIn }) => {
         }
     };
 
+    // сохранить фильм
     const addMovieToFavorites = movie => {
         mainApi.addMovieToFavorites(movie)
             .then(movieData => {
@@ -137,6 +138,7 @@ const Movies = ({ loggedIn }) => {
             .catch(err => console.log(err));
     };
 
+    // удалить фильм
     const removeMovieFromFavorites = movieId => {
         mainApi.removeMovieFromFavorites(movieId)
             .then(() => {

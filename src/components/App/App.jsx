@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import {Switch, Route, useHistory } from 'react-router-dom';
 import './App.css';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
-// import SavedMovies from '../Movies/SavedMovies/SavedMovies';
 import Footer from '../Footer/Footer';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
@@ -47,6 +46,7 @@ const App = () => {
                 if (data) {
                     handleLogin({ email, password });
                     history.push('/movies');
+                    window.location.reload();
                 }
             })
             .catch(err => console.log(err))
@@ -62,6 +62,7 @@ const App = () => {
                 setLoggedIn(true);
                 setCurrentUser(data);
                 history.push('/movies');
+                window.location.reload();
             })
             .catch(err => console.log(err))
             .finally(() => setPreloaderVisibility(''));
@@ -70,8 +71,9 @@ const App = () => {
     // выход
     const handleSignOut = () => {
         localStorage.clear();
-        history.push('/');
         setLoggedIn(false);
+        setCurrentUser({});
+        history.push('/');
     };
 
     // редактирование профиля
@@ -103,7 +105,7 @@ const App = () => {
                     setCurrentUser(userData);
                 })
                 .catch(err => console.log(err));
-            history.push('/movies');
+            // history.push('/movies');
         }
     }, [history, loggedIn]);
 
@@ -138,9 +140,7 @@ const App = () => {
                     isUpdateSuccess={isUpdateSuccess}
                     isUpdateFail={isUpdateFail}
                 />
-                <Route path="*">
-                    <NotFound />
-                </Route>
+                <Route component={NotFound} path='*' />
             </Switch>
         </CurrentUserContext.Provider>
     </div>);
