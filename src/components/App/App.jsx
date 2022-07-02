@@ -59,10 +59,10 @@ const App = () => {
         mainApi.authorize({ email, password })
             .then(data => {
                 localStorage.setItem('token', data.token);
-                setLoggedIn(true);
                 setCurrentUser(data);
+                setLoggedIn(true);
                 history.push('/movies');
-                window.location.reload();
+                // window.location.reload();
             })
             .catch(err => console.log(err))
             .finally(() => setPreloaderVisibility(''));
