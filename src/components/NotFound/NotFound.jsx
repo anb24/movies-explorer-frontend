@@ -1,5 +1,5 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './NonFound.css';
 
 const NotFound = () => {
@@ -12,8 +12,8 @@ const NotFound = () => {
             <span
                 onClick={() => history.goBack()}
                 className="not-found__go-back">
-            Назад
-          </span>
+                Назад
+            </span>
         </div>
     </section>);
 }

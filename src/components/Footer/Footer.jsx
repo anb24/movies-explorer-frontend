@@ -2,12 +2,12 @@ import React from 'react';
 import './Footer.css';
 
 const Footer = ({
-                    links = []
-                }) => {
+    links = []
+}) => {
     return (<footer className="footer">
         <div className="footer__container">
             <p className="footer__heading">Учебный проект Яндекс.Практикум х BeatFilm.</p>
-            <div className="footer__line"/>
+            <div className="footer__line" />
             <span className="footer__year">© {new Date().getFullYear()}</span>
             <nav className="footer__nav">
                 <ul className="footer__nav-list">

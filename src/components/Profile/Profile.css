@@ -52,6 +52,30 @@
     background: var(--dark-lines-color);
 }
 
+.profile__error-message {
+    font-size: 10px;
+    line-height: 1;
+    color: var(--input-error-color);
+    opacity: 1;
+    top: 18px;
+    left: 0;
+    transition: opacity 0.3s;
+}
+
+.profile__update-message {
+    margin-top: 40px;
+    text-align: center;
+    opacity: .6;
+}
+
+.profile__update-message_fail {
+    color: var(--input-error-color);
+}
+
+.profile__update-message_success {
+    color: var(--primary-accent-color);
+}
+
 .profile__control {
     display: grid;
     grid-template-rows: repeat(2, min-content);
@@ -79,6 +103,15 @@
 
 .profile__button_logout {
     color: var(--input-error-color);
+}
+
+.profile__button_disabled {
+    color: var(--lightgray-text-color);
+}
+
+.profile__button_disabled:hover {
+    opacity: .6;
+    cursor: not-allowed;
 }
 
 @media screen and (max-width: 768px) {

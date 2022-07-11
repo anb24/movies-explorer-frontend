@@ -32,9 +32,9 @@
 
     /* размеры контейнеров и медиазапросы */
     --desktop-container: 1200px;
-    --auth-form-container: 396px;
     --tablet-max-width: 1199px;
     --tablet-min-width: 768px;
     --mobile-max-width: 767px;
+    --auth-form-container: 396px;
     --mobile-min-width: 320px;
 }

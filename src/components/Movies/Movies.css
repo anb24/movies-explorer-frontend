@@ -9,7 +9,7 @@
     margin: 0 auto;
 }
 
-.movies__load-more {
+/* .movies__load-more {
     margin: 0 auto 80px;
     padding: 0 20px;
     display: block;
@@ -25,11 +25,11 @@
     border: none;
     cursor: pointer;
     transition: all .3s;
-}
+} */
 
-.movies__load-more:hover {
+/* .movies__load-more:hover {
     filter: invert(10%);
-}
+} */
 
 @media screen and (max-width: 768px) {
     .movies {

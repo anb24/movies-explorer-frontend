@@ -39,7 +39,7 @@
     transition: all .3s;
 }
 
-.portfolio__link:hover + .portfolio__link-arrow {
+.portfolio__link:hover+.portfolio__link-arrow {
     transform: rotate(45deg);
     transition: all .3s;
 }

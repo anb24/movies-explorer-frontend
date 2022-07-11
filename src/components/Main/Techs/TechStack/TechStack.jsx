@@ -4,11 +4,11 @@ import ButtonedLink from '../../../ButtonedLink/ButtonedLink';
 import './TechStack.css';
 
 const TechStack = ({
-                       links = [], className = ''
-                   }) => {
+    links = [], className = ''
+}) => {
     return (<nav className="tech-stack">
         <ul className={`tech-stack__list ${className}`}>
-            {links.map(({id, caption, url}) => (<li key={id} className="tech-stack__list-item">
+            {links.map(({ id, caption, url }) => (<li key={id} className="tech-stack__list-item">
                 <ButtonedLink
                     caption={caption}
                     href={url}
