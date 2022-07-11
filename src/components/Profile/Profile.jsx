@@ -27,6 +27,9 @@ const Profile = ({ loggedIn,
         })
     }, [setValues, currentUser]);
 
+    const checkEqualInput = () =>
+        currentUser.name !== values.name || currentUser.email !== values.email;
+
     return (
         <>
             <Header loggedIn={loggedIn} />
@@ -51,7 +54,10 @@ const Profile = ({ loggedIn,
                                 minLength="2"
                                 maxLength="30"
                                 value={values.name || ''}
-                                onChange={handleChange}
+                                onChange={(evt) => {
+                                    handleChange(evt);
+                                    checkEqualInput();
+                                }}
                             />
                             <span className="profile__error-message ">
                                 {errors.name || ''}
@@ -68,7 +74,11 @@ const Profile = ({ loggedIn,
                                 minLength="2"
                                 maxLength="30"
                                 value={values.email || ''}
-                                onChange={handleChange}
+                                // onChange={handleChange}
+                                   onChange={(evt) => {
+                                       handleChange(evt);
+                                       checkEqualInput();
+                                   }}
                             />
                             <span className="profile__error-message">
                                 {errors.email || ''}
@@ -81,8 +91,8 @@ const Profile = ({ loggedIn,
                                 className={`
                       profile__button 
                       profile__button_edit-confirm 
-                      ${!isValid && 'profile__button_disabled'}`}
-                                disabled={!isValid && true}
+                      ${!isValid || !checkEqualInput() && 'profile__button_disabled'}`}
+                                disabled={!isValid && true || !checkEqualInput()}
                             >
                                 Редактировать
                             </button>

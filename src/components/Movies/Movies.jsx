@@ -26,15 +26,6 @@ const Movies = ({ loggedIn }) => {
     const [isShortMovies, setIsShortMovies] = useState(false);
     const [moviesCount, setMoviesCount] = useState({ startCards: 0, rowCards: 0, moreCards: 0 });
 
-    useEffect(() => {
-        mainApi.getSavedMovies()
-            .then(res => {
-                if (res) setSavedMovies(res);
-            })
-            .catch(err => console.log(err));
-        if (pathname === '/saved-movies') setMoviesVisibility('movies-card-list_visible');
-    }, []);
-
     const filterShortMovies = movies => {
         if (isShortMovies) {
             return shortMovies(movies);
@@ -60,13 +51,6 @@ const Movies = ({ loggedIn }) => {
         () => filterShortMovies(savedMovies),
         [isShortMovies, savedMovies]
     );
-
-    useEffect(() => {
-        if (processedMovies.length <= processedRenderedMovies.length) {
-            setMoreButtonVisibility('movies-card-list__load-more_hidden');
-        }
-    }, [processedMovies, processedRenderedMovies]);
-
 
     function renderSpecificCardsCount() {
         const viewportWidth = window.screen.width;
@@ -147,6 +131,21 @@ const Movies = ({ loggedIn }) => {
             })
             .catch(err => console.log(err));
     };
+
+    useEffect(() => {
+        mainApi.getSavedMovies()
+            .then(res => {
+                if (res) setSavedMovies(res);
+            })
+            .catch(err => console.log(err));
+        if (pathname === '/saved-movies') setMoviesVisibility('movies-card-list_visible');
+    }, []);
+
+    useEffect(() => {
+        if (processedMovies.length <= processedRenderedMovies.length) {
+            setMoreButtonVisibility('movies-card-list__load-more_hidden');
+        }
+    }, [processedMovies, processedRenderedMovies]);
 
     return (
         <>

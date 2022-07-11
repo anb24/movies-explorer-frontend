@@ -36,7 +36,7 @@ const MoviesCardList = ({
 
         if (pathname === '/saved-movies') {
             setMoreButtonVisibility('movies-card-list__load-more_hidden');
-            setEmptyListNoticeVisibility('movies-card-list__empty-text_hidden');
+            // setEmptyListNoticeVisibility('movies-card-list__empty-text_hidden');
         } else {
             setEmptyListNoticeVisibility('');
         }

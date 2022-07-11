@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {Switch, Route, useHistory } from 'react-router-dom';
+import {Switch, Route, useHistory, useLocation } from 'react-router-dom';
 import './App.css';
 
 import Header from '../Header/Header';
@@ -14,14 +14,17 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { footerLinks } from '../../config/links';
 import { CurrentUserContext } from '../../contexts/currentUserContext';
 import { mainApi } from '../../utils/MainApi';
+import { moviesApi } from "../../utils/MoviesApi";
 
 const App = () => {
     const history = useHistory();
+    const { pathname } = useLocation();
     const [loggedIn, setLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [isUpdateSuccess, setIsUpdateSuccess] = useState(false);
     const [isUpdateFail, setIsUpdateFail] = useState(false);
     const [preloaderVisibility, setPreloaderVisibility] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const getToken = () => {
         return localStorage.getItem('token');
@@ -33,8 +36,45 @@ const App = () => {
             mainApi.getUserData(token)
                 .then(res => {
                     if (res) setLoggedIn(true);
+                    if (pathname === "/signup" || pathname === "/signin") {
+                        return history.push("/");
+                    }
+                    history.push(`${pathname}`);
                 })
                 .catch(err => console.log(err));
+        }
+    };
+
+    //Сохранение из внешнего API в локальное
+    const getMovies = () => {
+        if (!localStorage.getItem("storageMovies")) {
+            setIsLoading(true);
+            return moviesApi
+                .getMovies()
+                .then((res) => {
+                    return res.map((item) => {
+                        return {
+                            country: item.country || "",
+                            director: item.director || "",
+                            duration: item.duration || "",
+                            year: item.year || "",
+                            description: item.description || "",
+                            image: !item.image ? "" : `https://api.nomoreparties.co${item.image.url}`,
+                            trailer: item.trailerLink,
+                            thumbnail: !item.image ? "" : `https://api.nomoreparties.co${item.image.formats.thumbnail.url}`,
+                            movieId: item.id || "",
+                            nameRU: item.nameRU || "",
+                            nameEN: item.nameEN || "",
+                        };
+                    });
+                })
+                .then((res) => {
+                    // if (res) {
+                    localStorage.setItem("storageMovies", JSON.stringify(res));
+                    // }
+                })
+                .catch((err) => console.log(err))
+                .finally(() => setIsLoading(false));
         }
     };
 
@@ -45,6 +85,7 @@ const App = () => {
             .then(data => {
                 if (data) {
                     handleLogin({ email, password });
+                    getMovies();
                     history.push('/movies');
                 }
                 // window.location.reload();
@@ -62,7 +103,7 @@ const App = () => {
                 setCurrentUser(data);
                 setLoggedIn(true);
                 history.push('/movies');
-                // window.location.reload();
+                window.location.reload();
             })
             .catch(err => console.log(err))
             .finally(() => setPreloaderVisibility(''));
@@ -74,6 +115,7 @@ const App = () => {
         setLoggedIn(false);
         setCurrentUser({});
         history.push('/');
+        localStorage.removeItem("storageMovies");
     };
 
     // редактирование профиля
@@ -95,17 +137,19 @@ const App = () => {
     };
 
     useEffect(() => {
-        tokenCheck()
+            tokenCheck()
     }, []);
 
     useEffect(() => {
         if (loggedIn) {
             mainApi.getUserData(getToken())
                 .then(userData => {
+                    setLoggedIn(true);
                     setCurrentUser(userData);
                 })
                 .catch(err => console.log(err));
-            // history.push('/movies');
+             //history.push('/movies');
+            getMovies();
         }
     }, [history, loggedIn]);
 
@@ -127,6 +171,7 @@ const App = () => {
                 <ProtectedRoute path="/movies"
                     loggedIn={loggedIn}
                     component={Movies}
+                                isLoading={isLoading}
                 />
                 <ProtectedRoute path="/saved-movies"
                     loggedIn={loggedIn}
