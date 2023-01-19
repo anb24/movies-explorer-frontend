@@ -1,27 +1,70 @@
 import React from 'react';
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import savedCardIcon from '../../../images/save-button_state_on.svg';
 import unsavedCardIcon from '../../../images/save-button_state_off.svg';
 import deleteCardIcon from '../../../images/delete-button.svg';
 import './MoviesCard.css'
 
-const MoviesCard = ({ _id, url, title, duration }) => {
-    const {pathname} = useLocation();
-    const isSelected = false;
-    const сardIconSaveState = (isSelected ? savedCardIcon : unsavedCardIcon);
+const MoviesCard = ({
+    movie,
+    movieTitle,
+    movieDuration,
+    movieTrailer,
+    movieImage,
+    savedMovies,
+    addMovieToFavorites,
+    removeMovieFromFavorites
+}) => {
+    const { pathname } = useLocation();
+
+    // проверяет добавление в "сохранённые"
+    const isMovieAdded = movie => savedMovies.some(item => item.movieId === movie.id);
+
+    const isAddedToFavorites = (pathname === '/saved-movies' ? true : isMovieAdded(movie));
+
+    const сardIconSaveState = (isAddedToFavorites ? savedCardIcon : unsavedCardIcon);
     const cardIconState = (pathname === '/movies' ? сardIconSaveState : deleteCardIcon);
 
-    return (<li key={_id} className="movies-card">
-        <img src={url}
-             alt="Карточка"
-             className="movies-card__img"
-        />
-        <div className="movies-card__description-wrapper">
-            <p className="movies-card__title">{title}</p>
-            <span className="movies-card__duration">{duration}</span>
-            <img src={cardIconState} alt="тест" className="movies-card__icon"/>
-        </div>
-    </li>);
+    const savedMoviesHandler = () => {
+        if (!isAddedToFavorites) {
+            addMovieToFavorites(movie);
+        } else {
+            const deletedMovie = savedMovies.find(movie => movie.id = movie.movieId);
+            removeMovieFromFavorites(deletedMovie._id);
+        }
+    };
+
+    const deleteButtonHandler = () => {
+        removeMovieFromFavorites(movie._id);
+    };
+
+    const movieIconBehaviorToggle = (pathname === '/movies'
+        ? savedMoviesHandler
+        : deleteButtonHandler
+    );
+
+    return (
+        <li key={movie.id} className="movies-card">
+            <a href={movieTrailer}
+                rel="noopener noreferrer"
+                target="_blank"
+                className="movie-card__trailer-link">
+                <img src={movieImage}
+                    alt={movieTitle}
+                    className="movies-card__img"
+                />
+            </a>
+            <div className="movies-card__description-wrapper">
+                <p className="movies-card__title">{movieTitle}</p>
+                <span className="movies-card__duration">{movieDuration}</span>
+                <img src={cardIconState}
+                    alt="иконка сохранённые фильмы"
+                    className="movies-card__icon"
+                    onClick={movieIconBehaviorToggle}
+                />
+            </div>
+        </li>
+    );
 }
 
 export default MoviesCard;

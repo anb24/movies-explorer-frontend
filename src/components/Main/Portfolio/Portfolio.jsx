@@ -3,8 +3,8 @@ import './Portfolio.css';
 import linkArrow from '../../../images/link-arrow.svg';
 
 const Portfolio = ({
-                       links = [], className = ''
-                   }) => {
+    links = [], className = ''
+}) => {
     return (<div className={`portfolio ${className}`}>
         <h3 className={'portfolio__heading'}>Портфолио</h3>
         <ul className="portfolio__list">
